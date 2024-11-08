@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Subscription/aliases",
+      "apiVersion": "2020-09-01",
+      "name": "[parameters('subscriptionName')]",
+      "location": "global",
+      "properties": {
+        "subscriptionId": "[guid(parameters('subscriptionName'))]",
+        "displayName": "[parameters('displayName')]",
+        "billingScope": "[parameters('billingScope')]"
+      }
+    }
+  ],
+  "parameters": {
+    "subscriptionName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name for the new subscription"
+      }
+    },
+    "displayName": {
+      "type": "string",
+      "metadata": {
+        "description": "Display name for the subscription"
+      }
+    },
+    "billingScope": {
+      "type": "string",
+      "metadata": {
+        "description": "The billing scope for the subscription"
+      }
+    }
+  }
+}
